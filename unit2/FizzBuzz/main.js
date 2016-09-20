@@ -1,5 +1,4 @@
-var num = 1;
-for (num; num < 101; num++) {
+for (var num = 1; num < 101; num++) {
     if (num % 5 === 0 && num % 3 === 0) {
         console.log(num + " FizzBuzz")
     } else if (num % 5 === 0) {
