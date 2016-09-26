@@ -1,6 +1,3 @@
-var i = 0;
-var diez = '';
-for (; i < 7; i++) {
-    diez += '#';
+for (var diez = ''; diez.length < 8; diez += '#') {
     console.log(diez);
 }
