@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function countChar(string, char) {
+        var count = 0;
+        for (var i = 0; i < string.length; i++) {
+            if (string.charAt(i) == char) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+    function countBs(string) {
+        return countChar(string, "B");
+    }
+    console.log(countBs("sdkfhsjdkBsdkjfhskjdBksjdhfksjdhfk"));
+    console.log(countChar("sdkjfslkdfjslkdjfs dkjfskd ", "k"));
+</script>
+</body>
+</html>
