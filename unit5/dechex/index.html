@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function rgbToHex(red, green, blue) {
+        var out = '#';
+
+        function isInteger(num) {
+            return (num ^ 0) === num;
+        }
+
+        for (var i = 0; i < 3; ++i) {
+            var n = typeof arguments[i] == 'number' ? arguments[i] : parseInt(arguments[i]);
+
+            if (isNaN(n) || !isInteger(n) || n < 0 || n > 255) {
+                return false;
+            }
+
+            out += (n < 16 ? '0' : '') + n.toString(16);
+        }
+
+        return out;
+    }
+
+    console.log(rgbToHex(0, 1.1, 2));
+
+</script>
+</body>
+</html>

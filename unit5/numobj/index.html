@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function numToObj() {
+        var obj = new Object();
+        var num = prompt('Enter your number: ') - 0;
+
+        if (isNaN(num) || !((num ^ 0) === num) || num > 999 || num < 0) {
+            console.log('Error');
+            return obj;
+        }
+
+        var h = (num / 100) | 0;
+        var d = (( num - h * 100 ) / 10) | 0;
+        var u = num - h * 100 - d * 10;
+
+        obj['units'] = u;
+        obj['dozens'] = d;
+        obj['hundreds'] = h;
+
+        console.log(obj);
+    }
+
+    numToObj();
+</script>
+</body>
+</html>

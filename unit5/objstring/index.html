@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function objectToQueryString(obj){
+        return Object.keys(obj).map(function(key) { return key + '=' + obj[key]; }).join('&');
+    };
+    console.log(objectToQueryString({user: 'Dmitry'}));
+    console.log(objectToQueryString({user: 'Dmitry', password: 'pass'}));
+    console.log(objectToQueryString({user: 'Dmitry', password: 'pass', id:1}));
+</script>
+</body>
+</html>
