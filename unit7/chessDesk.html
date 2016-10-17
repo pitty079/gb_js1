@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main {
+        }
+
+        .cell {
+            width: 98px;
+            height: 98px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        .blackcell {
+            width: 98px;
+            height: 98px;
+            border: 1px solid black;
+            background-color: #8B7E66;
+            text-align: center;
+            font-size: 80px;
+            text-shadow: 0 0 11px white;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .indexcell {
+            height: 98px;
+            width: 18px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .topleftcell {
+            height: 18px;
+            width: 18px;
+            border: 0px solid black;
+        }
+
+        .topindexcell {
+            height: 18px;
+            width: 98px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+
+</div>
+
+<script>
+    var mainDiv = document.getElementsByClassName("main")[0];
+    console.log(mainDiv);
+    function buildTable(parent) {
+        var newTable = document.createElement("table");
+        buildCell.cellCount = 0;
+        function createTopRow() {
+            var cellChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            var topRow = document.createElement("tr");
+            var topLeftCell = document.createElement("td");
+            topLeftCell.className = "topleftcell";
+            topRow.appendChild(topLeftCell);
+            for (var i = 0; i <= 7; i++) {
+                topRow.innerHTML += "<td class='topindexcell'>" + cellChars[i] + "</td>";
+            }
+            console.log(topRow);
+            newTable.appendChild(topRow);
+        }
+
+        createTopRow();
+        for (var i = 8; i >= 1; i--) {
+            buildRow(newTable, i);
+        }
+        var tableObject = {};
+
+        function buildCell(parent, cellNumber, rowNumber) {
+            buildCell.cellCount++;
+            var cellChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            var newCell = document.createElement("td");
+            if ((buildCell.cellCount % 2) == 0) {
+                newCell.className = "blackcell";
+            } else {
+                newCell.className = "cell";
+            }
+            newCell.setAttribute('id', cellChars[cellNumber] + rowNumber);
+            parent.appendChild(newCell);
+        }
+
+        function buildRow(parent, rowNumber) {
+            var newRow = document.createElement("tr");
+            var indexCell = document.createElement("td");
+            indexCell.className = 'indexcell';
+            indexCell.innerText = rowNumber;
+            newRow.appendChild(indexCell);
+            for (var i = 0; i < 8; i++) {
+                buildCell(newRow, i, rowNumber);
+            }
+            parent.appendChild(newRow);
+            buildCell.cellCount++;
+        }
+
+        parent.appendChild(newTable);
+    }
+
+    buildTable(mainDiv);
+    figures = {
+        wpeshka: "♙",
+        bpeshka: "♟",
+        wladia: "♖",
+        bladia: "♜",
+        whorse: "♘",
+        bhorse: "♞",
+        wofficer: "♗",
+        bofficer: "♝",
+        wking: "♔",
+        bking: "♚",
+        wferz: "♕",
+        bferz: "♛",
+    };
+    function figureDeployment() {
+        var chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        for (var i = 0; i <= 7; i++) {
+            document.getElementById((chars[i] + '2')).innerText = figures.wpeshka;
+        }
+        for (i = 0; i <= 7; i++) {
+            document.getElementById((chars[i] + '7')).innerText = figures.bpeshka;
+        }
+        document.getElementById('a1').innerText = figures.wladia;
+        document.getElementById('h1').innerText = figures.wladia;
+        document.getElementById('b1').innerText = figures.whorse;
+        document.getElementById('g1').innerText = figures.whorse;
+        document.getElementById('c1').innerText = figures.wofficer;
+        document.getElementById('f1').innerText = figures.wofficer;
+        document.getElementById('e1').innerText = figures.wking;
+        document.getElementById('d1').innerText = figures.wferz;
+        document.getElementById('a8').innerText = figures.bladia;
+        document.getElementById('h8').innerText = figures.bladia;
+        document.getElementById('b8').innerText = figures.bhorse;
+        document.getElementById('g8').innerText = figures.bhorse;
+        document.getElementById('c8').innerText = figures.bofficer;
+        document.getElementById('f8').innerText = figures.bofficer;
+        document.getElementById('e8').innerText = figures.bking;
+        document.getElementById('d8').innerText = figures.bferz;
+    }
+    figureDeployment();
+</script>
+</body>
+</html>
